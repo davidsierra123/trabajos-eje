@@ -8,9 +8,9 @@ package Modelo;
  *
  * @author SENA
  */
-public class ModeloP {
+public class Modelo_Cliente {
     protected String Usuario;
-    protected String Contraseña;
+    protected int Contraseña;
 
     public String getUsuario() {
         return Usuario;
@@ -20,15 +20,15 @@ public class ModeloP {
         this.Usuario = Usuario;
     }
 
-    public String getContraseña() {
+    public int getContraseña() {
         return Contraseña;
     }
 
-    public void setContraseña(String Contraseña) {
+    public void setContraseña(int Contraseña) {
         this.Contraseña = Contraseña;
     }
 
-    public ModeloP(String Usuario, String Contraseña) {
+    public Modelo_Cliente(String Usuario, int Contraseña) {
         this.Usuario = Usuario;
         this.Contraseña = Contraseña;
     }
