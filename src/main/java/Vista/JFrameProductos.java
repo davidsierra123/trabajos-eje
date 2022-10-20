@@ -15,6 +15,7 @@ public class JFrameProductos extends javax.swing.JFrame {
      */
     public JFrameProductos() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -38,6 +39,8 @@ public class JFrameProductos extends javax.swing.JFrame {
         Op1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Prod = new javax.swing.JTable();
+        B_Mostrar = new javax.swing.JButton();
+        B_Buscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,7 +68,7 @@ public class JFrameProductos extends javax.swing.JFrame {
             }
         });
 
-        Op1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opciones", "Opcion 1", "Opcion 2" }));
+        Op1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Opcion 1", "Opcion 2" }));
         Op1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Op1ActionPerformed(evt);
@@ -84,6 +87,19 @@ public class JFrameProductos extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(Tabla_Prod);
+
+        B_Mostrar.setBackground(new java.awt.Color(0, 255, 204));
+        B_Mostrar.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
+        B_Mostrar.setText("Mostrar");
+        B_Mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_MostrarActionPerformed(evt);
+            }
+        });
+
+        B_Buscar.setBackground(new java.awt.Color(51, 255, 204));
+        B_Buscar.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
+        B_Buscar.setText("Buscar");
 
         javax.swing.GroupLayout PanelProdctLayout = new javax.swing.GroupLayout(PanelProdct);
         PanelProdct.setLayout(PanelProdctLayout);
@@ -110,7 +126,12 @@ public class JFrameProductos extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PanelProdctLayout.createSequentialGroup()
                         .addGap(264, 264, 264)
-                        .addComponent(Prod, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Prod, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelProdctLayout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(B_Mostrar)
+                        .addGap(76, 76, 76)
+                        .addComponent(B_Buscar)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         PanelProdctLayout.setVerticalGroup(
@@ -138,7 +159,11 @@ public class JFrameProductos extends javax.swing.JFrame {
                     .addGroup(PanelProdctLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(PanelProdctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(B_Mostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -162,6 +187,10 @@ public class JFrameProductos extends javax.swing.JFrame {
     private void Op1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Op1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Op1ActionPerformed
+
+    private void B_MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_MostrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_MostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,6 +228,8 @@ public class JFrameProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton B_Buscar;
+    public javax.swing.JButton B_Mostrar;
     public javax.swing.JLabel Cate_Prod;
     public javax.swing.JLabel Id_Prod;
     public javax.swing.JTextField Iden_Prod;

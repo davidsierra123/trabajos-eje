@@ -30,7 +30,11 @@ public class Controla implements ActionListener {
 
     public Controla(JFPersonas Login) {
         this.Login = Login;
+        this.Productos = Productos;
         this.Login.Entrar.addActionListener(this);
+        this.Login.Exit.addActionListener(this);
+        this.Productos.B_Mostrar.addActionListener(this);
+        this.Productos.B_Buscar.addActionListener(this);
         this.Entrar();
 
     }
@@ -46,37 +50,23 @@ public class Controla implements ActionListener {
 
             Usuario = this.Login.Usuario1.getText();
             Contraseña = this.Login.Contra1.getText();
+             
 
             if (Usuario.equals("Cliente") && Contraseña.equals("567")) {
                 this.Productos.setVisible(true);
 
+            } else if (Usuario.equals("Vendedor") && Contraseña.equals("345")) {
+                this.Vendedor.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "USUARIO NO REGISTRADO");
-            }
-
-        }
-        if (e.getSource() == this.Login.Entrar) {
-
-            Usuario = this.Login.Usuario1.getText();
-            Contraseña = this.Login.Contra1.getText();
-
-            if (Usuario.equals("Vendedor") && Contraseña.equals("345")) {
-                this.Vendedor.setVisible(true);
-
+                JOptionPane.showMessageDialog(null, "DATOS NO ENCONTRADOS, INTENTELO NUEVAMENTE");
             }
         }
-        if (e.getSource() == this.Login.Entrar) {
+        if (e.getSource() == this.Productos.B_Mostrar) {
+            this.Productos.setVisible(true);
 
-            Usuario = this.Login.Usuario1.getText();
-            Contraseña = this.Login.Contra1.getText();
-
-            if (Usuario.equals("Vendedor") && Contraseña.equals("345")) {
-                this.Vendedor.setVisible(true);
-
-            }
+        } else if (e.getSource() == this.Login.Exit) {
+            System.exit(0);
 
         }
-
     }
-
 }
