@@ -7,11 +7,13 @@ package Controllador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Vista.JFPersonas;
-import Modelo.Modelo_Cliente;
-import Vista.JFrameVendedor;
-import Vista.JFrameProductos;
+import Vista.JFPersonas;
+import Vista.JFVendedor;
+import Modelo.Modelo_Prod;
+import Vista.JFProductos;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import javax.swing.JTable;
 
 /**
  *
@@ -23,14 +25,14 @@ public class Controla implements ActionListener {
     private String Contraseña = null;
 
     JFPersonas Login;
-    JFrameProductos Productos = new JFrameProductos();
-    JFrameVendedor Vendedor = new JFrameVendedor();
+    JFProductos Productos = new JFProductos();
+    JFVendedor Vendedor = new JFVendedor();
 
-    ArrayList<Modelo_Cliente> ListaPersonas = new ArrayList<Modelo_Cliente>();
+    ArrayList<Modelo_Prod> ListaPersonas = new ArrayList<Modelo_Prod>();
 
     public Controla(JFPersonas Login) {
         this.Login = Login;
-        this.Productos = Productos;
+        /*this.Productos = Productos;*/
         this.Login.Entrar.addActionListener(this);
         this.Login.Exit.addActionListener(this);
         this.Productos.B_Mostrar.addActionListener(this);
@@ -50,7 +52,6 @@ public class Controla implements ActionListener {
 
             Usuario = this.Login.Usuario1.getText();
             Contraseña = this.Login.Contra1.getText();
-             
 
             if (Usuario.equals("Cliente") && Contraseña.equals("567")) {
                 this.Productos.setVisible(true);
@@ -60,13 +61,25 @@ public class Controla implements ActionListener {
             } else {
                 JOptionPane.showMessageDialog(null, "DATOS NO ENCONTRADOS, INTENTELO NUEVAMENTE");
             }
-        }
-        if (e.getSource() == this.Productos.B_Mostrar) {
-            this.Productos.setVisible(true);
-
         } else if (e.getSource() == this.Login.Exit) {
             System.exit(0);
 
         }
+        if (e.getSource() == this.Productos.B_Mostrar) {
+            this.Productos.setVisible(true);
+          
+
+        }
     }
+        public void tablainfo(JTable Tabla, ArrayList<Modelo_Prod> listapersona) {
+        for (int i = 0; i < listapersona.size(); i++) {
+            Tabla.setValueAt(listapersona.get(i).getId(),i,0);
+            Tabla.setValueAt(listapersona.get(i).getNombre(), i, 1);
+            Tabla.setValueAt(listapersona.get(i).getPrecio(), i, 2);
+            Tabla.setValueAt(listapersona.get(i).getCategorias(), i, 3);
+
+        }
+    }
+
 }
+
