@@ -11,7 +11,7 @@ import Vista.JFPersonas;
  *
  * @author SENA
  */
-public class Loginventas {
+public class Iniciar {
 
     public static void main(String[] args) {
 

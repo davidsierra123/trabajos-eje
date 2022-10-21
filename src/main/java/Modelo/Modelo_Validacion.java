@@ -8,7 +8,7 @@ package Modelo;
  *
  * @author SENA
  */
-public class Modelo_Cliente {
+public class Modelo_Validacion {
     protected String Usuario;
     protected int Contraseña;
 
@@ -28,7 +28,7 @@ public class Modelo_Cliente {
         this.Contraseña = Contraseña;
     }
 
-    public Modelo_Cliente(String Usuario, int Contraseña) {
+    public Modelo_Validacion(String Usuario, int Contraseña) {
         this.Usuario = Usuario;
         this.Contraseña = Contraseña;
     }
