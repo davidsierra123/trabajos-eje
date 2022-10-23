@@ -15,6 +15,7 @@ public class Admin extends javax.swing.JFrame {
      */
     public Admin() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -30,6 +31,7 @@ public class Admin extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         Panel = new javax.swing.JDesktopPane();
+        B_Exit = new javax.swing.JButton();
         botones_menu = new javax.swing.JMenuBar();
         Menu1 = new javax.swing.JMenu();
         Cliente = new javax.swing.JMenuItem();
@@ -44,15 +46,29 @@ public class Admin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        B_Exit.setText("Exit");
+        B_Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_ExitActionPerformed(evt);
+            }
+        });
+
+        Panel.setLayer(B_Exit, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
         PanelLayout.setHorizontalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 921, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
+                .addContainerGap(843, Short.MAX_VALUE)
+                .addComponent(B_Exit)
+                .addContainerGap())
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
+            .addGroup(PanelLayout.createSequentialGroup()
+                .addComponent(B_Exit)
+                .addGap(0, 510, Short.MAX_VALUE))
         );
 
         Menu1.setText("Cliente");
@@ -101,6 +117,13 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ClienteActionPerformed
 
+    private void B_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ExitActionPerformed
+        // TODO add your handling code here:
+        /*this.hide();
+        JFPersonas JFP = new JFPersonas();
+        JFP.setVisible(true);*/
+    }//GEN-LAST:event_B_ExitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -137,6 +160,7 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton B_Exit;
     public javax.swing.JMenuItem Cliente;
     public javax.swing.JMenu Menu1;
     public javax.swing.JMenu Menu2;

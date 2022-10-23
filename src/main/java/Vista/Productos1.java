@@ -15,6 +15,7 @@ public class Productos1 extends javax.swing.JInternalFrame {
      */
     public Productos1() {
         initComponents();
+        
     }
 
     /**
@@ -40,13 +41,14 @@ public class Productos1 extends javax.swing.JInternalFrame {
         Cate_Prod = new javax.swing.JLabel();
         Iden_Prod = new javax.swing.JTextField();
         Nombr_Pro = new javax.swing.JTextField();
+        B_Guardar = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
         setBackground(new java.awt.Color(153, 255, 255));
         setClosable(true);
         setForeground(new java.awt.Color(255, 255, 255));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         Op1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Opcion 1", "Opcion 2" }));
         Op1.addActionListener(new java.awt.event.ActionListener() {
@@ -57,6 +59,24 @@ public class Productos1 extends javax.swing.JInternalFrame {
 
         Tabla_Prod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -103,12 +123,19 @@ public class Productos1 extends javax.swing.JInternalFrame {
             }
         });
 
+        B_Guardar.setBackground(new java.awt.Color(102, 255, 255));
+        B_Guardar.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
+        B_Guardar.setText("Guardar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(264, 264, 264)
+                        .addComponent(Prod, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,6 +145,12 @@ public class Productos1 extends javax.swing.JInternalFrame {
                             .addComponent(Precio_Prod, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(B_Guardar)
+                                .addGap(52, 52, 52)
+                                .addComponent(B_Mostrar)
+                                .addGap(73, 73, 73)
+                                .addComponent(B_Buscar))
                             .addComponent(Op1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,15 +158,7 @@ public class Productos1 extends javax.swing.JInternalFrame {
                                     .addComponent(Nombr_Pro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Prec_Prod, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(36, 36, 36)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(264, 264, 264)
-                        .addComponent(Prod, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addComponent(B_Mostrar)
-                        .addGap(76, 76, 76)
-                        .addComponent(B_Buscar)))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,7 +189,8 @@ public class Productos1 extends javax.swing.JInternalFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(B_Mostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(B_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -186,6 +212,7 @@ public class Productos1 extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton B_Buscar;
+    public javax.swing.JButton B_Guardar;
     public javax.swing.JButton B_Mostrar;
     public javax.swing.JLabel Cate_Prod;
     public javax.swing.JLabel Id_Prod;

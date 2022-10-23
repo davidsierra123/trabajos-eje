@@ -4,10 +4,13 @@
  */
 package Controllador;
 
+/*EXPORTAMOS TODAS LAS COSAS QUE VAMOS A NECESITAR*/
+import Modelo.Modelo_Clientes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Vista.Vendedor1;
 import Modelo.Modelo_Prod;
+import Modelo.Modelo_Vendedor;
 import Vista.Cliente1;
 import Vista.Admin;
 import Vista.Productos1;
@@ -22,6 +25,8 @@ import javax.swing.JTable;
  */
 public class Controla implements ActionListener {
 
+    /*LE DAMOS LOS PARAMETROS QUE VAMOS A UTILIZAR A LA CHISMOSA*/
+    
     private String Usuario = null;
     private String Contraseña = null;
     private int Id = 0;
@@ -35,17 +40,27 @@ public class Controla implements ActionListener {
     Cliente1 Cliente1 = new Cliente1();
     Admin Admin = new Admin();
 
-    ArrayList<Modelo_Prod> LisPerso = new ArrayList<Modelo_Prod>();
+    ArrayList<Modelo_Prod> ListPersona = new ArrayList<Modelo_Prod>();
+    ArrayList<Modelo_Clientes> ListClientes = new ArrayList<Modelo_Clientes>();
+    ArrayList<Modelo_Vendedor> ListVendedor = new ArrayList<Modelo_Vendedor>();
 
     public Controla(JFPersonas Login) {
+
+        /*BOTONES DE JFRAME PRNCIPAL*/
         this.Login = Login;
         this.Login.Entrar.addActionListener(this);
         this.Login.Exit.addActionListener(this);
+
+        /*BOTONES DE JFRAME ADMINISTRADOR-PRODUCTOS*/
         this.Productos.B_Mostrar.addActionListener(this);
         this.Productos.B_Buscar.addActionListener(this);
+        this.Productos.B_Guardar.addActionListener(this);
+
+        /*BOTONES DE JFRAME ADMINISTRADOR*/
         this.Admin.Cliente.addActionListener(this);
         this.Admin.Vendedor.addActionListener(this);
         this.Admin.Productos.addActionListener(this);
+        this.Admin.B_Exit.addActionListener(this);
         this.Entrar();
 
     }
@@ -67,15 +82,24 @@ public class Controla implements ActionListener {
                 this.Admin.Menu1.setVisible(true);
                 this.Admin.Menu2.setVisible(true);
 
+                this.Login.Usuario1.setText("");
+                this.Login.Contra1.setText("");
+
             } else if (Usuario.equals("Cliente") && Contraseña.equals("345")) {
                 this.Admin.setVisible(true);
                 this.Admin.Menu2.setVisible(false);
                 this.Admin.Menu3.setVisible(false);
 
+                this.Login.Usuario1.setText("");
+                this.Login.Contra1.setText("");
+
             } else if (Usuario.equals("Vendedor") && Contraseña.equals("567")) {
                 this.Admin.setVisible(true);
                 this.Admin.Menu1.setVisible(false);
                 this.Admin.Menu3.setVisible(false);
+
+                this.Login.Usuario1.setText("");
+                this.Login.Contra1.setText("");
 
 //            
             } else {
@@ -93,9 +117,8 @@ public class Controla implements ActionListener {
 
         }
         if (this.Admin.Productos == e.getSource()) {
-            Productos1 Prod = new Productos1();
-            this.Admin.Panel.add(Prod);
-            Prod.show();
+            this.Admin.Panel.add(Productos);
+            Productos.show();
 
         }
         if (this.Admin.Cliente == e.getSource()) {
@@ -104,9 +127,42 @@ public class Controla implements ActionListener {
             Cli.show();
 
         }
+
+        if (e.getSource() == this.Productos.B_Guardar) {
+            Id = Integer.parseInt(this.Productos.Iden_Prod.getText());
+            Nombre = (this.Productos.Nombr_Pro.getText());
+            Precio = Integer.parseInt(this.Productos.Prec_Prod.getText());
+            Categorias = this.Productos.Cate_Prod.getText();
+
+            ListPersona.add(new Modelo_Prod(Id, Nombre, Precio, Categorias));
+
+            tablainfo(this.Productos.Tabla_Prod, ListPersona);
+
+            JOptionPane.showMessageDialog(null, "Datos Guardados Con Exitos");
+
+            this.Productos.Iden_Prod.setText("");
+            this.Productos.Nombr_Pro.setText("");
+            this.Productos.Prec_Prod.setText("");
+        }
+
         if (e.getSource() == this.Productos.B_Buscar) {
-            Id = Integer.parseInt(this.Productos.Id_Prod.getText());
-            Nombre = Integer.parse(this.Productos.Nom_Prod.getText());
+
+            Id = Integer.parseInt(this.Productos.Iden_Prod.getText());
+            for (int i = 0; i < ListPersona.size(); i++) {
+                if (Id == ListPersona.get(i).getId()) {
+                    this.Productos.Nombr_Pro.setText(ListPersona.get(i).getNombre());
+
+                }
+            }
+        }
+        if (e.getSource() == this.Admin.B_Exit) {
+            Admin.dispose();
+            Login.setVisible(true);
+        }
+        if (e.getSource() == this.Productos.B_Mostrar) {
+            for (int i = 0; i < ListPersona.size(); i++) {
+                JOptionPane.showMessageDialog(null, "Documento: " + this.ListPersona.get(i).getId() + "\n" + "Nombre : " + this.ListPersona.get(i).getNombre() + "\n" + "Precio : " + this.ListPersona.get(i).getPrecio());
+            }
         }
     }
 
@@ -118,6 +174,15 @@ public class Controla implements ActionListener {
             Tabla.setValueAt(listapersona.get(i).getCategorias(), i, 3);
 
         }
-    }
+        /*}
 
+    public void Limpiar() {
+        this.Productos.Id_Prod.setText("");
+        this.Productos.Prec_Prod.setText("");
+        this.Productos.Cate_Prod.setText("");
+        this.Productos.Nombr_Pro.setText("");
+
+    }*/
+
+    }
 }
