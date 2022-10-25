@@ -168,9 +168,9 @@ public class Controla implements ActionListener {
         if (e.getSource() == this.Productos.B_Buscar) {
 
             Id = Integer.parseInt(this.Productos.Iden_Prod.getText());
-            for (int i = 0; i < ListPersona.size(); i++) {
-                if (Id == ListPersona.get(i).getId()) {
-                    this.Productos.Nombr_Pro.setText(ListPersona.get(i).getNombre());
+            for (int i = 0; i < Lista_Usuario.Productos.size(); i++) {
+                if (Id == Lista_Usuario.Productos.get(i).getId()) {
+                    this.Productos.Nombr_Pro.setText(Lista_Usuario.Productos.get(i).getNombre());
 
                 }
             }
@@ -186,8 +186,8 @@ public class Controla implements ActionListener {
 
         }
         if (e.getSource() == this.Productos.B_Mostrar) {
-            for (int i = 0; i < ListPersona.size(); i++) {
-                JOptionPane.showMessageDialog(null, "Documento: " + this.ListPersona.get(i).getId() + "\n" + "Nombre : " + this.ListPersona.get(i).getNombre() + "\n" + "Precio : " + this.ListPersona.get(i).getPrecio());
+            for (int i = 0; i < Lista_Usuario.Productos.size(); i++) {
+                JOptionPane.showMessageDialog(null, "Documento: " + Lista_Usuario.Productos.get(i).getId() + "\n" + "Nombre : " + Lista_Usuario.Productos.get(i).getNombre() + "\n" + "Precio : " + Lista_Usuario.Productos.get(i).getPrecio());
             }
         }
     }
