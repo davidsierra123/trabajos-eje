@@ -5,6 +5,7 @@
 package Controllador;
 
 /*EXPORTAMOS TODAS LAS COSAS QUE VAMOS A NECESITAR*/
+import Modelo.Lista_Usuario;
 import Modelo.Modelo_Clientes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +18,7 @@ import Vista.Productos1;
 import Vista.JFPersonas;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.JTable;
 
 /**
@@ -26,7 +28,6 @@ import javax.swing.JTable;
 public class Controla implements ActionListener {
 
     /*LE DAMOS LOS PARAMETROS QUE VAMOS A UTILIZAR A LA CHISMOSA*/
-    
     private String Usuario = null;
     private String Contraseña = null;
     private int Id = 0;
@@ -34,6 +35,7 @@ public class Controla implements ActionListener {
     private int Precio = 0;
     private String Categorias = null;
 
+    /*ESTABLECEMOS LOS LOGIN A TRABAJAR*/
     JFPersonas Login;
     Productos1 Productos = new Productos1();
     Vendedor1 Vendedor1 = new Vendedor1();
@@ -67,6 +69,7 @@ public class Controla implements ActionListener {
 
     public void Entrar() {
         this.Login.setVisible(true);
+        /*this.Admin.setVisible(true);*/
 
     }
 
@@ -134,15 +137,32 @@ public class Controla implements ActionListener {
             Precio = Integer.parseInt(this.Productos.Prec_Prod.getText());
             Categorias = this.Productos.Cate_Prod.getText();
 
-            ListPersona.add(new Modelo_Prod(Id, Nombre, Precio, Categorias));
+            Modelo_Prod objeto = new Modelo_Prod(Id, Nombre, Precio, Categorias);
 
-            tablainfo(this.Productos.Tabla_Prod, ListPersona);
+            if (Modelo_Prod.Verificar(Id, Nombre, Precio, Categorias) == -1) {
+                objeto.setId(Id);
+                objeto.getNombre();
+                objeto.getPrecio();
+                objeto.getCategorias();
 
-            JOptionPane.showMessageDialog(null, "Datos Guardados Con Exitos");
+                Lista_Usuario.Agregacion(objeto);
 
-            this.Productos.Iden_Prod.setText("");
-            this.Productos.Nombr_Pro.setText("");
-            this.Productos.Prec_Prod.setText("");
+                tablainfo(this.Productos.Tabla_Prod, Lista_Usuario.Productos);
+
+                JOptionPane.showMessageDialog(null, "Datos Guardados Con Exitos");
+
+                this.Productos.Iden_Prod.setText("");
+                this.Productos.Nombr_Pro.setText("");
+                this.Productos.Prec_Prod.setText("");
+                this.Productos.Op1.setActionCommand("");
+                
+                
+
+            }else{
+                JOptionPane.showMessageDialog(null, "NO SIRVE");
+            }
+
+            /*ListPersona.add(new Modelo_Prod(Id, Nombre, Precio, Categorias));*/
         }
 
         if (e.getSource() == this.Productos.B_Buscar) {
@@ -158,6 +178,12 @@ public class Controla implements ActionListener {
         if (e.getSource() == this.Admin.B_Exit) {
             Admin.dispose();
             Login.setVisible(true);
+
+            this.Productos.Iden_Prod.setText("");
+            this.Productos.Nombr_Pro.setText("");
+            this.Productos.Prec_Prod.setText("");
+            this.Productos.Cate_Prod.setText("");
+
         }
         if (e.getSource() == this.Productos.B_Mostrar) {
             for (int i = 0; i < ListPersona.size(); i++) {
@@ -166,23 +192,14 @@ public class Controla implements ActionListener {
         }
     }
 
-    public void tablainfo(JTable Tabla, ArrayList<Modelo_Prod> listapersona) {
-        for (int i = 0; i < listapersona.size(); i++) {
-            Tabla.setValueAt(listapersona.get(i).getId(), i, 0);
-            Tabla.setValueAt(listapersona.get(i).getNombre(), i, 1);
-            Tabla.setValueAt(listapersona.get(i).getPrecio(), i, 2);
-            Tabla.setValueAt(listapersona.get(i).getCategorias(), i, 3);
+    public void tablainfo(JTable Tabla, Vector<Modelo_Prod> Productos) {
+        for (int i = 0; i < Lista_Usuario.Productos.size(); i++) {
+            Tabla.setValueAt(Lista_Usuario.Productos.get(i).getId(), i, 0);
+            Tabla.setValueAt(Lista_Usuario.Productos.get(i).getNombre(), i, 1);
+            Tabla.setValueAt(Lista_Usuario.Productos.get(i).getPrecio(), i, 2);
+            Tabla.setValueAt(Lista_Usuario.Productos.get(i).getCategorias(), i, 3);
 
         }
-        /*}
-
-    public void Limpiar() {
-        this.Productos.Id_Prod.setText("");
-        this.Productos.Prec_Prod.setText("");
-        this.Productos.Cate_Prod.setText("");
-        this.Productos.Nombr_Pro.setText("");
-
-    }*/
 
     }
 }

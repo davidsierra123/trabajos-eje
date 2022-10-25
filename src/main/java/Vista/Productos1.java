@@ -48,7 +48,7 @@ public class Productos1 extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(153, 255, 255));
         setClosable(true);
         setForeground(new java.awt.Color(255, 255, 255));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         Op1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Opcion 1", "Opcion 2" }));
         Op1.addActionListener(new java.awt.event.ActionListener() {

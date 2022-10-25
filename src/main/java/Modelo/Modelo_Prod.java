@@ -4,15 +4,19 @@
  */
 package Modelo;
 
+import static Modelo.Lista_Usuario.mostrar;
+import java.util.Vector;
+
 /**
  *
  * @author David Sierra
  */
 public class Modelo_Prod {
-     protected int Id;
-     protected String Nombre;
-     protected int Precio;
-     protected String Categorias;
+
+    protected int Id;
+    protected String Nombre;
+    protected int Precio;
+    protected String Categorias;
 
     public int getId() {
         return Id;
@@ -52,5 +56,20 @@ public class Modelo_Prod {
         this.Precio = Precio;
         this.Categorias = Categorias;
     }
-    
+
+    public static int Verificar(int Id, String Nombre, int Precio, String Categorias) {
+
+        Vector lista = mostrar();
+
+        Modelo_Prod objeto;
+        for (int i = 0; i < lista.size(); i++) {
+            objeto = (Modelo_Prod) lista.elementAt(i);
+            if (objeto.getId() == Id && objeto.getNombre().equalsIgnoreCase(Nombre) && objeto.getPrecio() == Precio && objeto.getCategorias().equalsIgnoreCase(Categorias)){
+                 return i;
+            }
+           
+        }
+        return -1;
+    }
+
 }
