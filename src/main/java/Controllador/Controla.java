@@ -30,6 +30,8 @@ public class Controla implements ActionListener {
     /*LE DAMOS LOS PARAMETROS QUE VAMOS A UTILIZAR A LA CHISMOSA*/
     private String Usuario = null;
     private String Contraseña = null;
+
+    /*VARIABLES DE PRODUCTOS*/
     private int Id = 0;
     private String Nombre = null;
     private int Precio = 0;
@@ -69,7 +71,6 @@ public class Controla implements ActionListener {
 
     public void Entrar() {
         this.Login.setVisible(true);
-        /*this.Admin.setVisible(true);*/
 
     }
 
@@ -114,20 +115,26 @@ public class Controla implements ActionListener {
         }
         if (this.Admin.Vendedor == e.getSource()) {
 
-            Vendedor1 Vende = new Vendedor1();
-            this.Admin.Panel.add(Vende);
-            Vende.show();
+            this.Admin.Panel.add(Vendedor1);
+            Vendedor1.show();
+
+            this.Cliente1.doDefaultCloseAction();
+            this.Productos.doDefaultCloseAction();
 
         }
         if (this.Admin.Productos == e.getSource()) {
             this.Admin.Panel.add(Productos);
             Productos.show();
 
+            this.Cliente1.doDefaultCloseAction();
+            this.Vendedor1.doDefaultCloseAction();
         }
         if (this.Admin.Cliente == e.getSource()) {
-            Cliente1 Cli = new Cliente1();
-            this.Admin.Panel.add(Cli);
-            Cli.show();
+            this.Admin.Panel.add(Cliente1);
+            Cliente1.show();
+
+            this.Vendedor1.doDefaultCloseAction();
+            this.Productos.doDefaultCloseAction();
 
         }
 
@@ -155,14 +162,10 @@ public class Controla implements ActionListener {
                 this.Productos.Nombr_Pro.setText("");
                 this.Productos.Prec_Prod.setText("");
                 this.Productos.Op1.setActionCommand("");
-                
-                
 
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "NO SIRVE");
             }
-
-            /*ListPersona.add(new Modelo_Prod(Id, Nombre, Precio, Categorias));*/
         }
 
         if (e.getSource() == this.Productos.B_Buscar) {
