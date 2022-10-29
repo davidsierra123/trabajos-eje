@@ -14,7 +14,7 @@ import Modelo.Modelo_Prod;
 import Modelo.Modelo_Vendedor;
 import Vista.Cliente1;
 import Vista.Admin;
-import Vista.Productos1;
+/*import Vista.Productos1;*/
 import Vista.JFPersonas;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class Controla implements ActionListener {
 
     /*ESTABLECEMOS LOS LOGIN A TRABAJAR*/
     JFPersonas Login;
-    Productos1 Productos = new Productos1();
+    /*Productos1 Productos = new Productos1();*/
     Vendedor1 Vendedor1 = new Vendedor1();
     Cliente1 Cliente1 = new Cliente1();
     Admin Admin = new Admin();
@@ -56,9 +56,9 @@ public class Controla implements ActionListener {
         this.Login.Exit.addActionListener(this);
 
         /*BOTONES DE JFRAME ADMINISTRADOR-PRODUCTOS*/
-        this.Productos.B_Mostrar.addActionListener(this);
+        /*this.Productos.B_Mostrar.addActionListener(this);
         this.Productos.B_Buscar.addActionListener(this);
-        this.Productos.B_Guardar.addActionListener(this);
+        this.Productos.B_Guardar.addActionListener(this);*/
 
         /*BOTONES DE JFRAME ADMINISTRADOR*/
         this.Admin.Cliente.addActionListener(this);
@@ -119,12 +119,12 @@ public class Controla implements ActionListener {
             Vendedor1.show();
 
             this.Cliente1.doDefaultCloseAction();
-            this.Productos.doDefaultCloseAction();
+            Controllador_Productos.Productos.doDefaultCloseAction();
 
         }
         if (this.Admin.Productos == e.getSource()) {
-            this.Admin.Panel.add(Productos);
-            Productos.show();
+            this.Admin.Panel.add(Controllador_Productos.Productos);
+            Controllador_Productos.Productos.show();
 
             this.Cliente1.doDefaultCloseAction();
             this.Vendedor1.doDefaultCloseAction();
@@ -134,75 +134,19 @@ public class Controla implements ActionListener {
             Cliente1.show();
 
             this.Vendedor1.doDefaultCloseAction();
-            this.Productos.doDefaultCloseAction();
+            Controllador_Productos.Productos.doDefaultCloseAction();
 
         }
 
-        if (e.getSource() == this.Productos.B_Guardar) {
-            Id = Integer.parseInt(this.Productos.Iden_Prod.getText());
-            Nombre = (this.Productos.Nombr_Pro.getText());
-            Precio = Integer.parseInt(this.Productos.Prec_Prod.getText());
-            Categorias = this.Productos.Cate_Prod.getText();
-
-            Modelo_Prod objeto = new Modelo_Prod(Id, Nombre, Precio, Categorias);
-
-            if (Modelo_Prod.Verificar(Id, Nombre, Precio, Categorias) == -1) {
-                objeto.setId(Id);
-                objeto.getNombre();
-                objeto.getPrecio();
-                objeto.getCategorias();
-
-                Lista_Usuario.Agregacion(objeto);
-
-                tablainfo(this.Productos.Tabla_Prod, Lista_Usuario.Productos);
-
-                JOptionPane.showMessageDialog(null, "Datos Guardados Con Exitos");
-
-                this.Productos.Iden_Prod.setText("");
-                this.Productos.Nombr_Pro.setText("");
-                this.Productos.Prec_Prod.setText("");
-                this.Productos.Op1.setActionCommand("");
-
-            } else {
-                JOptionPane.showMessageDialog(null, "NO SIRVE");
-            }
-        }
-
-        if (e.getSource() == this.Productos.B_Buscar) {
-
-            Id = Integer.parseInt(this.Productos.Iden_Prod.getText());
-            for (int i = 0; i < Lista_Usuario.Productos.size(); i++) {
-                if (Id == Lista_Usuario.Productos.get(i).getId()) {
-                    this.Productos.Nombr_Pro.setText(Lista_Usuario.Productos.get(i).getNombre());
-
-                }
-            }
-        }
         if (e.getSource() == this.Admin.B_Exit) {
             Admin.dispose();
             Login.setVisible(true);
 
-            this.Productos.Iden_Prod.setText("");
-            this.Productos.Nombr_Pro.setText("");
-            this.Productos.Prec_Prod.setText("");
-            this.Productos.Cate_Prod.setText("");
+            Controllador_Productos.Productos.Iden_Prod.setText("");
+            Controllador_Productos.Productos.Nombr_Pro.setText("");
+            Controllador_Productos.Productos.Prec_Prod.setText("");
+            Controllador_Productos.Productos.Cate_Prod.setText("");
 
         }
-        if (e.getSource() == this.Productos.B_Mostrar) {
-            for (int i = 0; i < Lista_Usuario.Productos.size(); i++) {
-                JOptionPane.showMessageDialog(null, "Documento: " + Lista_Usuario.Productos.get(i).getId() + "\n" + "Nombre : " + Lista_Usuario.Productos.get(i).getNombre() + "\n" + "Precio : " + Lista_Usuario.Productos.get(i).getPrecio());
-            }
-        }
-    }
-
-    public void tablainfo(JTable Tabla, Vector<Modelo_Prod> Productos) {
-        for (int i = 0; i < Lista_Usuario.Productos.size(); i++) {
-            Tabla.setValueAt(Lista_Usuario.Productos.get(i).getId(), i, 0);
-            Tabla.setValueAt(Lista_Usuario.Productos.get(i).getNombre(), i, 1);
-            Tabla.setValueAt(Lista_Usuario.Productos.get(i).getPrecio(), i, 2);
-            Tabla.setValueAt(Lista_Usuario.Productos.get(i).getCategorias(), i, 3);
-
-        }
-
     }
 }
